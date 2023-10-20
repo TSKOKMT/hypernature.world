@@ -4,37 +4,67 @@
         <meta charset="UTF-8">
         <title>HYPER NATURE</title>
         <link rel="icon" type="image/x-icon" href="favicon.png">
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="font.css">
     </head>
     <body>
-        <img src="Logotype.png" class="title-image">
-        <h1>HYPER NATURE</h1>
-        <h1>You See What You See</h1>
-        <p>物語は人間の本質、100年後も変わらぬもの</p>
-        <p>行って、そして帰ってくる物語</p>
-        <p>30分の経験を通ることで、世界の見え方が変わる</p>
-        <p>物語の中心となる立方体</p>
-        <p>複数の階層があり、それを下っていくにつれ没入していく</p>
-        <p>エブエブのマルチバースのような、インセプションの夢のような</p>
-        <p>エレベーターかポータルといった、バースをジャンプするギミックがいる?</p>
-        <p>常に「歩く」ことを大切に</p>
-        <p>時間軸はこちらがコントロール</p>
-        <p>みる場所は体験者の自由</p>
-        <img src="Image/01.jpg" class="normal-image">
-        <img src="Image/02.jpg" class="normal-image">
-        <img src="Image/03.jpg" class="normal-image">
-        <img src="Image/04.jpg" class="normal-image">
-        <img src="Image/05.jpg" class="normal-image">
-        <img src="Image/06.jpg" class="normal-image">
-        <img src="Image/07.jpg" class="normal-image">
-        <img src="Image/08.jpg" class="normal-image">
-        <img src="Image/09.jpg" class="normal-image">
-        <img src="Image/10.jpg" class="normal-image">
-        <img src="Image/11.jpg" class="normal-image">
-        <img src="Image/12.jpg" class="normal-image">
-        <img src="Image/13.jpg" class="normal-image">
-        <img src="Image/14.jpg" class="normal-image">
-        <img src="Image/15.jpg" class="normal-image">
-        <img src="Image/16.jpg" class="normal-image">
+        <img src="04 1-1 I.png" class="image">
     </body>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: "neue-haas-grotesk-display", Sans-Serif;
+            font-weight: normal;
+        }
+        body {
+            background: #00ff00;
+        }
+        h1 {
+            line-height: 75%;
+        }
+        .logotype {
+            width: 100vw;
+        }
+        .image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        /*#text01 {
+            position: absolute;
+        }*/
+    </style>
+
+    <script>
+        function calculateUnit() {
+            var height = document.documentElement.clientHeight;
+            var width = document.documentElement.clientWidth;
+            var unit = Math.sqrt(height * width) / 120;
+
+            var size = 120;
+
+            const images = document.getElementsByClassName("image");
+
+            /*const text01 = document.getElementById("text01");
+            text01.innerHTML = "";*/
+
+            for (let i = 0; i < images.length; i++) {
+                const image = images[i];
+
+                const imageObject = new Image();
+                imageObject.src = image.src;
+                var imageWidth = imageObject.width;
+                var imageHeight = imageObject.height;
+                var imageAspect = imageWidth / imageHeight;
+
+                image.style.width = size * unit * Math.sqrt(imageAspect) + "px";
+
+                ///text01.innerHTML += imageWidth + "x" + imageHeight + "<br>";
+            }
+        }
+        window.addEventListener("load", calculateUnit);
+        window.addEventListener("resize", calculateUnit);
+    </script>
 </html>
