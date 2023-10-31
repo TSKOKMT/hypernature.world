@@ -61,7 +61,7 @@
                 var imageHeight = imageObject.height;
                 var imageAspect = imageWidth / imageHeight;
 
-                var term = map(Math.sin(time / 1201201), -1, 1, 120, 121);
+                var term = map(Math.sin(time / Math.pow(2, 32)), -1, 1, 32, 64);
                 var rot = 12;
                 var rotation = map(Math.sin(time / term * towPI), -1, 1, 0, rot * towPI);
 
