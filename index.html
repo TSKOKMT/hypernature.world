@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <title>HYPER NATURE</title>
         <link rel="icon" type="image/x-icon" href="favicon.png">
-        <link rel="stylesheet" type="text/css" href="font.css">
     </head>
     <body>
         <img src="04 1-1 I.png" class="image">
@@ -38,17 +37,20 @@
     </style>
 
     <script>
-        function calculateUnit() {
+        var towPI = Math.PI * 2;
+
+        function loop() {
             var height = document.documentElement.clientHeight;
             var width = document.documentElement.clientWidth;
+
+            let date = new Date();
+            var time = date.getTime() / 1000;
+
             var unit = Math.sqrt(height * width) / 120;
 
             var size = 120;
 
             const images = document.getElementsByClassName("image");
-
-            /*const text01 = document.getElementById("text01");
-            text01.innerHTML = "";*/
 
             for (let i = 0; i < images.length; i++) {
                 const image = images[i];
@@ -59,12 +61,20 @@
                 var imageHeight = imageObject.height;
                 var imageAspect = imageWidth / imageHeight;
 
-                image.style.width = size * unit * Math.sqrt(imageAspect) + "px";
+                var term = map(Math.sin(time / 1201201), -1, 1, 120, 121);
+                var rot = 12;
+                var rotation = map(Math.sin(time / term * towPI), -1, 1, 0, rot * towPI);
 
-                ///text01.innerHTML += imageWidth + "x" + imageHeight + "<br>";
+                image.style.width = size * unit * Math.sqrt(imageAspect) + "px";
+                image.style.transform = 'translate(-50%,-50%) rotate(' + rotation + 'rad)';
             }
+
+            window.requestAnimationFrame(loop);
         }
-        window.addEventListener("load", calculateUnit);
-        window.addEventListener("resize", calculateUnit);
+        window.requestAnimationFrame(loop);
+
+        function map(value, low1, high1, low2, high2) {
+            return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+        }
     </script>
 </html>
