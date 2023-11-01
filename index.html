@@ -6,6 +6,9 @@
         <link rel="icon" type="image/x-icon" href="favicon.png">
     </head>
     <body>
+        <video width="1920" height="1080" loop autoplay muted>
+            <source src="movie.mp4" type="video/mp4">
+        </video>
         <img src="04 1-1 I.png" class="image">
     </body>
 
@@ -26,6 +29,12 @@
             width: 100vw;
         }
         .image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        video {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -68,6 +77,18 @@
                 image.style.width = size * unit * Math.sqrt(imageAspect) + "px";
                 image.style.transform = 'translate(-50%,-50%) rotate(' + rotation + 'rad)';
             }
+
+            const video = document.getElementsByTagName("video")[0];
+            if (width / height > 16 / 9) {
+                video.width = width.toString();
+                video.height = (width * 9 / 16).toString();
+            }
+            else {
+                video.height = height.toString();
+                video.width = (height * 16 / 9).toString();
+            }
+            /*video.width = (120 * unit * Math.sqrt(16 / 9)).toString();
+            video.height = (120 * unit * Math.sqrt(9 / 16)).toString();*/
 
             window.requestAnimationFrame(loop);
         }
