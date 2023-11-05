@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>HYPER NATURE</title>
+        <link rel="icon" type="image/x-icon" href="favicon.png">
+    </head>
+    <body>
+        <h1>1F<br>HYPER NATURE : You See What You See</h1>
+        <img src="0.jpg" class="image">
+        <img src="1.jpg" class="image">
+        <img src="2.jpg" class="image">
+        <img src="3.jpg" class="image">
+        <img src="4.jpg" class="image">
+        <img src="5.jpg" class="image">
+        <img src="6.jpg" class="image">
+        <img src="7.jpg" class="image">
+        <img src="8.jpg" class="image">
+        <img src="9.jpg" class="image">
+        <img src="10.jpg" class="image">
+        <img src="11.jpg" class="image">
+    </body>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: "neue-haas-grotesk-display", Sans-Serif;
+            font-weight: bold;
+        }
+        body {
+            background: #00ff00;
+        }
+        .image {
+            position: absolute;
+            bottom: 0px;
+        }
+    </style>
+
+    <script>
+        function loop() {
+            var height = document.documentElement.clientHeight;
+            var width = document.documentElement.clientWidth;
+
+            let date = new Date();
+            var time = date.getTime() / 1000;
+
+            var unit = Math.sqrt(height * width) / 120;
+
+            var width = 90 * unit;
+
+            const h1 = document.getElementsByTagName("h1")[0];
+            h1.style.fontSize = 7.2 * unit + 'px';
+            h1.style.lineHeight = 7.2 * unit +'px';
+            h1.style.letterSpacing = -unit / 4 + 'px';
+
+            const images = document.getElementsByClassName("image");
+
+            for (let i = 0; i < images.length; i++) {
+                const image = images[i];
+
+                image.style.width = width + "px";
+                image.style.left = width * i + 'px';
+            }
+
+            window.requestAnimationFrame(loop);
+        }
+        window.requestAnimationFrame(loop);
+
+        function map(value, low1, high1, low2, high2) {
+            return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+        }
+    </script>
+</html>
