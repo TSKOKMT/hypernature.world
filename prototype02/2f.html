@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>HYPER NATURE</title>
+        <link rel="icon" type="image/x-icon" href="favicon.png">
+    </head>
+    <body>
+        <img src="10.jpg" class="image">
+        <img src="11.jpg" class="image">
+        <img src="12.jpg" class="image">
+        <img src="13.jpg" class="image">
+        <img src="14.jpg" class="image">
+        <img src="15.jpg" class="image">
+        <h1>2F<br>HYPER NATURE</h1>
+        <a href="index.html"><h1>Go to 1F</h1></a>
+    </body>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: "neue-haas-grotesk-display", Sans-Serif;
+            font-weight: bold;
+        }
+        body {
+            background: #00ff00;
+        }
+        .image {
+            position: absolute;
+            bottom: 0px;
+        }
+        a {
+            color: red;
+            text-decoration: none;
+        }
+    </style>
+
+    <script>
+        function loop() {
+            var height = document.documentElement.clientHeight;
+            var width = document.documentElement.clientWidth;
+
+            let date = new Date();
+            var time = date.getTime() / 1000;
+
+            var unit = Math.sqrt(height * width) / 120;
+
+            var width = 90 * unit;
+
+            const h1s = document.getElementsByTagName("h1");
+            for (let i = 0; i < h1s.length; i++) {
+                h1s[i].style.fontSize = 7.2 * unit + 'px';
+                h1s[i].style.lineHeight = 7.2 * unit +'px';
+                h1s[i].style.letterSpacing = -unit / 4 + 'px';
+            }
+
+            const images = document.getElementsByClassName("image");
+
+            for (let i = 0; i < images.length; i++) {
+                const image = images[i];
+
+                image.style.width = width + "px";
+                image.style.left = width * i + 'px';
+            }
+
+            window.requestAnimationFrame(loop);
+        }
+        window.requestAnimationFrame(loop);
+
+        function map(value, low1, high1, low2, high2) {
+            return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+        }
+    </script>
+</html>
